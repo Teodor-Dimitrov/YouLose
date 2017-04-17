@@ -16,10 +16,15 @@ public class Video {
 	private int dislikes;
 	private ArrayList<Category> cats;
 	private LocalDateTime date;
+	private String path;
+	private String description;
+	/// taka si mislq ne sam sig i v db go nqma  ,noooo TODO
+	private int publisher;
 	
 	public Video() {
 		
 	}
+
 
 	public int getId() {
 		return id;
@@ -77,5 +82,23 @@ public class Video {
 		this.date = date;
 	}
 	
+	public void setPath(String path){
+		this.path= path;
+	}
 	
+	public void setDescription(String description){
+		this.description = description;
+	}
+	
+	public void setPublisher(int publisher){
+		this.publisher= publisher;
+	}
+
+	public int getPublisher(){
+		return this.publisher;
+	}
+	
+	public String getDescription() {
+		return description;
+	}
 }
