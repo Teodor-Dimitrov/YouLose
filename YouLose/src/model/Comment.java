@@ -9,7 +9,7 @@ public class Comment {
 	private int videoID;
 	private int userID;
 	private String content;
-	private String username;
+	private String username;///TODO  why ?
 	private LocalDateTime postedDate;
 
 	public Comment() {

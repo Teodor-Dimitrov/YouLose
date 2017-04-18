@@ -10,7 +10,7 @@ public class DBManager {
 	private static final String DB_PORT = "3306";
 	private static final String DB_NAME = "youloseDB";
 	private static final String DB_USER = "root";
-	private static final String DB_PASS = "Nata1723";
+	private static final String DB_PASS = "1723";
 	private Connection con = null;
 
 	private DBManager() {

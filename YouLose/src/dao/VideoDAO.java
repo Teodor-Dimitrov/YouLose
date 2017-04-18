@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
 
+import model.Comment;
+import model.Playlist;
 import model.User;
 import model.Video;
 
@@ -14,9 +16,6 @@ public class VideoDAO {
 	private static VideoDAO instance;
 	private static final HashMap<String, Video> allVideos = new HashMap<>();//
 
-	private VideoDAO() {
-
-	}
 
 	public synchronized VideoDAO getInstance() {
 		if (instance == null) {
@@ -139,7 +138,7 @@ public class VideoDAO {
 		PreparedStatement st;
 		try {
 			st = con.prepareStatement("DELETE FROM video_liked_or_disliked WHERE users_user_id=" + user.getUserID()
-					+ " AND videos_videos_id=" + video.getId() + " AND like_or_dislike=1");
+					+ " AND videos_videos_id=" + video.getId() + " AND like_or_dislike=1 ;");
 			st.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println(" NOT deleted like");
@@ -152,7 +151,7 @@ public class VideoDAO {
 		PreparedStatement st;
 		try {
 			st = con.prepareStatement("DELETE FROM video_liked_or_disliked WHERE users_user_id=" + user.getUserID()
-					+ " AND videos_videos_id=" + video.getId() + " AND like_or_dislike=2");
+					+ " AND videos_videos_id=" + video.getId() + " AND like_or_dislike=2 ;");
 			st.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println(" NOT deleted dislike");
@@ -165,7 +164,7 @@ public class VideoDAO {
 			Connection con = DBManager.getInstance().getConnection();
 			PreparedStatement st;
 			try {
-				st = con.prepareStatement("DELETE FROM videos WHERE videos_id=" + video.getId());
+				st = con.prepareStatement("DELETE FROM videos WHERE videos_id=" + video.getId() + ";");
 				st.executeUpdate();
 			} catch (SQLException e) {
 				System.out.println(" NOT deleted video");
@@ -174,4 +173,81 @@ public class VideoDAO {
 		}
 	}
 
+	public void addVideoToPlayList(Video video, Playlist playlist) {
+		Connection con = DBManager.getInstance().getConnection();
+		PreparedStatement st;
+		try {
+			st = con.prepareStatement(
+					"INSERT INTO playlist_videos (videos_videos_id,playlists_playlist_id) VALUES (?,?);");
+			st.setInt(1, video.getId());
+			st.setInt(2, playlist.getPlaylistID());
+			st.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println(" NOT video added to playlist");
+			e.printStackTrace();
+		}
+	}
+
+	public void removeVideoFromPlaylist(Video video, Playlist playlist) {
+		Connection con = DBManager.getInstance().getConnection();
+		PreparedStatement st;
+		try {
+			st = con.prepareStatement("DELETE FROM playlist_videos WHERE videos_videos_id= " + video.getId()
+					+ " playlists_playlist_id=" + playlist.getPlaylistID() + ";");
+
+			st.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println(" NOT video deleted from playlist");
+			e.printStackTrace();
+		}
+	}
+
+	public void viewVideo(Video video) {
+		String sql = "SELECT views FROM videos WHERE videos_id=" + video.getId() + ";";
+		if (allVideos.isEmpty()) {
+			PreparedStatement st;
+			try {
+				st = DBManager.getInstance().getConnection().prepareStatement(sql);
+				ResultSet res = st.executeQuery();
+				while (res.next()) {
+					video.setId((res.getInt("videos_id") + 1));
+				}
+			} catch (SQLException e) {
+				System.out.println("problem in viewing a video");
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	public void commentVideo(Comment comment,Video video, User user){
+		//TODO DA OPRAVIM V DB  nqkoi danni za comment 
+		Connection con = DBManager.getInstance().getConnection();
+		PreparedStatement st;
+		try {
+			st = con.prepareStatement(
+					"INSERT INTO comments (users_user_id,video_id,content,postedDate) VALUES (?,?,?,?);");
+			st.setInt(1, user.getUserID());
+			st.setInt(2,video.getId());
+			st.setString(3, comment.getContent());
+			//TODO DATE THINGS
+		//	st.setTimestamp(4,comment.getPostedDate());
+			st.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("NOT commented video");
+			e.printStackTrace();
+		}
+	}
+	
+	public void deleteComment(Comment comment){
+		Connection con = DBManager.getInstance().getConnection();
+		PreparedStatement st;
+		try {
+			st = con.prepareStatement("DELETE FROM comments WHERE comment_id= " +comment.getCommentID()+ ";");
+
+			st.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println(" NOT comment deleted");
+			e.printStackTrace();
+		}
+	}
 }
