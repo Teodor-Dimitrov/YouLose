@@ -9,7 +9,6 @@ public class Comment {
 	private int videoID;
 	private int userID;
 	private String content;
-	private String username;///TODO  why ?
 	private LocalDateTime postedDate;
 
 	public Comment() {
@@ -48,13 +47,7 @@ public class Comment {
 		this.content = content;
 	}
 
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
+	
 
 	public LocalDateTime getPostedDate() {
 		return postedDate;

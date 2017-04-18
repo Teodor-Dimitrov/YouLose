@@ -14,7 +14,7 @@ import model.Video;
 public class VideoDAO {
 
 	private static VideoDAO instance;
-	private static final HashMap<String, Video> allVideos = new HashMap<>();//
+	private static HashMap<String, Video> allVideos = new HashMap<>();//
 
 
 	public synchronized VideoDAO getInstance() {
@@ -178,7 +178,6 @@ public class VideoDAO {
 				while (res.next()) {
 					video.setId((res.getInt("videos_id") + 1));
 				}
-			
 		}
 	}
 	
