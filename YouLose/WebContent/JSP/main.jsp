@@ -7,6 +7,16 @@
 <title>Main</title>
 </head>
 <body>
-
+<jsp:include page="header.jsp" />
+<table >
+		<td>
+			<a href="main.jsp">Home</a><br><br>
+			<a href="profile.jsp">My profile</a><br><br>
+			<a href="forLater.jsp">Watch later</a><br><br>
+			<a href="watched.jsp">Watched</a><br><br>
+			<a href="liked.jsp">Liked</a><br><br>
+			<a href="subscriptions.jsp">Subscriptions</a><br><br>
+		</td>
+	</table>
 </body>
 </html>
