@@ -17,6 +17,14 @@
 			<a href="liked.jsp">Liked</a><br><br>
 			<a href="subscriptions.jsp">Subscriptions</a><br><br>
 		</td>
+		<td>
+		<form action="../uploadVideo">
+		Upload video:<method="POST" enctype="multipart/form-data">
+	<input type="file" id="video" name="profilePicture" accept="video/*">
+	<input type="submit" value="Upload">
+	</form>
+		
+		</td>
 	</table>
 </body>
 </html>

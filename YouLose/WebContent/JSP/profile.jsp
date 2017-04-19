@@ -17,7 +17,27 @@
 			<a href="liked.jsp">Liked</a><br><br>
 			<a href="subscriptions.jsp">Subscriptions</a><br><br>
 		</td>
+		<td>
+			<img src="image/<%session.getAttribute("username"); %>">
+			<h1><%session.getAttribute("username"); %></h1></br>
+			<h3>Change profile picture:</h3>
+	<form method="POST" enctype="multipart/form-data">
+		<input type="file" id="profilePic" name="profilePicture" accept="image/*">
+		<input type="submit" value="Upload">
+	</form></br>
+	<form action="../changeUsername" method="post">
+		<h3>Change username:</h3>
+		<input type="submit" value="Change">
+	</form>
+	<form action="../changeEmail" method="post">
+		<h3>Change e-mail:</h3>
+		<input type="submit" value="Change">
+	</form>
+	<form action="../changePassword" method="post">
+		<h3>Change password:</h3>
+		<input type="submit" value="Change">
+	</form>
+		</td>
 	</table>
-
 </body>
 </html>

@@ -13,7 +13,7 @@
 	String button3 = "Upload";
 	String link1 = "register.jsp";
 	String link2 = "login.jsp";
-	String link3 = "login.jsp";%>
+	String link3 = "main.jsp";%>
 	<% if(session.getAttribute("logged")!=null){
 		logged = (Boolean) session.getAttribute("logged");
 		if(logged){
