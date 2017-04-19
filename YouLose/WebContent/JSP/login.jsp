@@ -12,12 +12,24 @@
 	
 	<table >
 		<td>
-			<a href="main.jsp">Home</a><br><br>
-			<a href="profile.jsp">My profile</a><br><br>
-			<a href="forLater.jsp">Watch later</a><br><br>
-			<a href="watched.jsp">Watched</a><br><br>
-			<a href="liked.jsp">Liked</a><br><br>
-			<a href="subscriptions.jsp">Subscriptions</a><br><br>
+		<form action="../home" method="get">
+				<input type="submit" value="Home"></br></br>
+		</form>
+		<form action="../profile" method="get">
+				<input type="submit" value="My profile"></br></br>
+		</form>
+		<form action="../forLater" method="get">
+				<input type="submit" value="Watch later"></br></br>
+		</form>
+		<form action="../watched" method="get">
+				<input type="submit" value="Watched"></br></br>
+		</form>
+		<form action="../liked" method="get">
+				<input type="submit" value="Liked"></br></br>
+		</form>
+		<form action="../subscriptions" method="get">
+				<input type="submit" value="Subscriptions"></br></br>
+		</form>
 		</td>
 	<td>
 	<h1>Please, login</h1>
@@ -26,9 +38,11 @@ Username: <input type="text" placeholder="enter username" name="user"
 			required="required"></br>
 Password: <input type="password" placeholder="enter pass"
 			name="password" required="required"></br>
-<input type="submit" value="Login"></br>
-</form>
-<a href="register.jsp">Don`t have an account? Register here.</a>
+		<input type="submit" value="Login"></br>
+	</form>
+			<form action="../register" method="post">
+				<input type="submit" value="Don`t have an account? Register here."></br></br>
+			</form>
 </td>
 </table>
 </body>

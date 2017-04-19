@@ -4,18 +4,30 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Home</title>
+<title>Profile</title>
 </head>
 <body bgcolor="lightgreen">
 <jsp:include page="header.jsp" />
 <table >
 		<td>
-			<a href="main.jsp">Home</a><br><br>
-			<a href="profile.jsp">My profile</a><br><br>
-			<a href="forLater.jsp">Watch later</a><br><br>
-			<a href="watched.jsp">Watched</a><br><br>
-			<a href="liked.jsp">Liked</a><br><br>
-			<a href="subscriptions.jsp">Subscriptions</a><br><br>
+		<form action="../home" method="get">
+				<input type="submit" value="Home"></br></br>
+		</form>
+		<form action="../profile" method="get">
+				<input type="submit" value="My profile"></br></br>
+		</form>
+		<form action="../forLater" method="get">
+				<input type="submit" value="Watch later"></br></br>
+		</form>
+		<form action="../watched" method="get">
+				<input type="submit" value="Watched"></br></br>
+		</form>
+		<form action="../liked" method="get">
+				<input type="submit" value="Liked"></br></br>
+		</form>
+		<form action="../subscriptions" method="get">
+				<input type="submit" value="Subscriptions"></br></br>
+		</form>
 		</td>
 		<td>
 			<img src="image/<%session.getAttribute("username"); %>">

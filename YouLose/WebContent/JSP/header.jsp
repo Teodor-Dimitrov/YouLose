@@ -11,9 +11,9 @@
 	String button1 = "Register";
 	String button2 = "Log in";
 	String button3 = "Upload";
-	String link1 = "register.jsp";
-	String link2 = "login.jsp";
-	String link3 = "main.jsp";%>
+	String link1 = "../register";
+	String link2 = "../login";
+	String link3 = "../main";%>
 	<% if(session.getAttribute("logged")!=null){
 		logged = (Boolean) session.getAttribute("logged");
 		if(logged){
@@ -35,12 +35,25 @@
 	}
 	%>
 	<div align = "right">
-	<% if (session.getAttribute("mail")!=null){ %>
-	<%= session.getAttribute("mail") %>
+	<% if (session.getAttribute("user")!=null){ %>
+	<%= session.getAttribute("user") %>
 	<% } %>
-		<a href = "<%= link1%>" ><%= button1%></a>
-		<a href = "<%= link2%>" ><%= button2%></a>
-		<a href = "<%= link3%>" ><%= button3%></a>
+	<table><tr><td>
+	<form action="<%= link1%>" method="get">
+				<input type="submit" value="<%= button1%>">
+		</form></td>
+		<td>
+		<form action="<%= link2%>" method="get">
+				<input type="submit" value="<%= button2%>">
+		</form>
+		</td>
+		<td>
+		<form action="<%= link3%>" method="get">
+				<input type="submit" value="<%= button3%>">
+		</form>
+		</td>
+		</tr>
+		</table>
 	</div>
 	
 	<table>
